@@ -4,131 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hugo Hernández | Player Menu</title>
-    <!-- Importamos una fuente estilo Pixel Art -->
+    <!-- Importamos una fuente estilo Pixel Art[cite: 1] -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #050510;
-            --panel-bg: rgba(10, 20, 50, 0.85);
-            --border-color: #e2e8f0;
-            --highlight: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Press Start 2P', monospace;
-            line-height: 1.6;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-size: 12px;
-        }
-
-        /* Efecto de pantalla antigua de tubo (CRT) */
-        .crt-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
-            pointer-events: none; z-index: 100;
-        }
-
-        /* Contenedor principal del menú RPG */
-        .game-menu {
-            width: 90%; max-width: 1000px; height: 85vh;
-            display: grid; grid-template-columns: 250px 1fr; gap: 20px;
-            position: relative; z-index: 10;
-        }
-
-        /* Paneles estilo caja de diálogo de videojuego */
-        .panel {
-            background: var(--panel-bg);
-            border: 4px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.5), inset 0 0 10px rgba(56, 189, 248, 0.2);
-        }
-
-        /* Sidebar - Menú de navegación */
-        .sidebar { display: flex; flex-direction: column; gap: 15px; }
-        .player-info { text-align: center; margin-bottom: 20px; border-bottom: 2px dashed var(--text-muted); padding-bottom: 20px;}
-        .player-info h1 { font-size: 14px; color: var(--highlight); margin-bottom: 10px; line-height: 1.4;}
-        .level { color: #fbbf24; }
-
-        .menu-btn {
-            background: transparent; color: var(--text-main); border: none;
-            font-family: inherit; font-size: 12px; text-align: left;
-            padding: 10px; cursor: pointer; transition: 0.2s; position: relative;
-        }
-        .menu-btn:hover, .menu-btn.active { color: var(--highlight); padding-left: 20px; }
-        .menu-btn.active::before {
-            content: "►"; position: absolute; left: 0; color: var(--highlight);
-        }
-
-        /* Contenido de las pantallas */
-        .screen { display: none; height: 100%; overflow-y: auto; padding-right: 10px; }
-        .screen.active { display: block; animation: fadeIn 0.3s ease; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-
-        /* Estilos de contenido interno */
-        h2 { font-size: 16px; color: var(--highlight); margin-bottom: 20px; text-transform: uppercase; border-bottom: 2px solid var(--highlight); padding-bottom: 5px;}
-        h3 { font-size: 12px; color: #fbbf24; margin-bottom: 5px; margin-top: 20px; }
-        p { margin-bottom: 15px; color: #cbd5e1; }
-        ul { list-style-type: square; margin-left: 20px; margin-bottom: 15px; color: #cbd5e1; }
-        li { margin-bottom: 8px; }
-
-        /* Barras de estadísticas (Skills) */
-        .stat-bar { display: flex; align-items: center; margin-bottom: 10px; }
-        .stat-name { width: 150px; }
-        .bar-bg { flex-grow: 1; height: 12px; background: #333; border: 2px solid #fff; }
-        .bar-fill { height: 100%; background: var(--highlight); }
-
-        /* Botones de Inventario (Enlaces) */
-        .item-link {
-            display: inline-block; padding: 10px 15px; margin-top: 10px;
-            background: transparent; border: 2px solid var(--highlight); color: var(--highlight);
-            text-decoration: none; text-transform: uppercase; transition: 0.2s;
-        }
-        .item-link:hover { background: var(--highlight); color: var(--bg-color); }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: var(--border-color); }
-
-    </style>
+    <!-- Enlace al archivo CSS modularizado -->
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
     <div class="crt-overlay"></div>
 
     <div class="game-menu">
-        <!-- MENÚ LATERAL -->
+        <!-- MENÚ LATERAL[cite: 1] -->
         <div class="panel sidebar">
             <div class="player-info">
                 <h1>HUGO HERNÁNDEZ</h1>
                 <p class="level">Lv. 99 Game Programmer</p>
             </div>
-            <button class="menu-btn active" onclick="changeScreen('status')">STATUS</button>
-            <button class="menu-btn" onclick="changeScreen('quests')">QUESTS (Exp)</button>
-            <button class="menu-btn" onclick="changeScreen('inventory')">INVENTORY (Projects)</button>
-            <button class="menu-btn" onclick="changeScreen('system')">SYSTEM (Contact)</button>
+            <button class="menu-btn active" data-target="status">STATUS</button>
+            <button class="menu-btn" data-target="quests">QUESTS (Exp)</button>
+            <button class="menu-btn" data-target="inventory">INVENTORY (Projects)</button>
+            <button class="menu-btn" data-target="system">SYSTEM (Contact)</button>
         </div>
 
-        <!-- PANTALLA PRINCIPAL -->
+        <!-- PANTALLA PRINCIPAL[cite: 1] -->
         <div class="panel content-area">
             
-            <!-- PANTALLA: STATUS (Sobre mí, Skills, Educación) -->
+            <!-- PANTALLA: STATUS[cite: 1] -->
             <div id="status" class="screen active">
                 <h2>Character Status</h2>
                 <p>"I love videogames and programming. Now I'm trying to make a game with a small team about mythology. I also love Asian cultures as well as its languages."</p>
+                <p>"My objective in the development world is to make fun games to play and have fun with my friends!"</p>
                 
                 <h3>Attributes</h3>
                 <div class="stat-bar"><span class="stat-name">Programming</span><div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div></div>
@@ -143,7 +48,7 @@
                 <p>> Bachillerato de Excelencia (2023-2025)<br>IES Guadarrama</p>
             </div>
 
-            <!-- PANTALLA: QUESTS (Experiencia Laboral) -->
+            <!-- PANTALLA: QUESTS[cite: 1] -->
             <div id="quests" class="screen">
                 <h2>Quest Log (Experience)</h2>
                 
@@ -163,24 +68,32 @@
                 <p>Administrative in the ACEDE program hired by Moviendo Ficha for the educational entities of Colegio San Agustín in Guadarrama and IES Jaime Ferrán in Collado Villalba.</p>
             </div>
 
-            <!-- PANTALLA: INVENTARIO (Proyectos Web y Juegos) -->
+            <!-- PANTALLA: INVENTARIO (Ahora enlaza a documentos separados)[cite: 1] -->
             <div id="inventory" class="screen">
-                <h2>Inventory (Projects)</h2>
+                <h2>Inventory</h2>
                 
-                <h3>[Spellbook] Echoes of Atramentia</h3>
+                <h3>Echoes of Atramentia</h3>
                 <p>A game featuring a unique drawing-based magic system.</p>
-                <a href="https://echoesofatramentia.com" class="item-link">CAST (Play Demo)</a>
+                <a href="projects/echoes-of-atramentia.html" class="item-link">VIEW DETAILS</a>
 
-                <h3>[Map] CV Slime</h3>
+                <h3>CV Slime</h3>
                 <p>A simple yet engaging game inspired by titles like papers please.</p>
-                <a href="https://alterego07.itch.io/cv-slime-alpha" class="item-link">EXPLORE (Visit Site)</a>
+                <a href="https://alterego07.itch.io/cv-slime-alpha" class="item-link">VIEW DETAILS</a>
 
-                <h3>[Merchant] Darling Dolls E-commerce</h3>
+                <h3>Darling Dolls E-commerce</h3>
                 <p>A fully responsive platform built to manage products and Perlita/Diamante subscription tiers.</p>
-                <a href="https://darlingdollsshop.com" class="item-link">TRADE (Visit Site)</a>
+                <a href="projects/darling-dolls.html" class="item-link">VIEW DETAILS</a>
+
+                <h3>Project Mythologiae</h3>
+                <p>A fantasy-themed game with a focus on storytelling and character development.</p>
+                <a href="projects/project-mythologiae.html" class="item-link">VIEW DETAILS</a>
+
+                <h3>Echoes of Legends</h3>
+                <p>A Spanish mythological inspired rpg adventure game</p>
+                <a href="projects/echoes-of-the-past.html" class="item-link">VIEW DETAILS</a>
             </div>
 
-            <!-- PANTALLA: SYSTEM (Contacto) -->
+            <!-- PANTALLA: SYSTEM[cite: 1] -->
             <div id="system" class="screen">
                 <h2>System Settings (Contact)</h2>
                 <p>Ready to start a new co-op campaign? Send a message to my server:</p>
@@ -192,31 +105,14 @@
                 </ul>
 
                 <h3>External Networks</h3>
-                <a href="#" class="item-link">GITHUB</a>
-                <a href="#" class="item-link">ITCH.IO</a>
-                <a href="#" class="item-link">LINKEDIN</a>
+                <a href="https://alterego07.itch.io" class="item-link">ITCH.IO</a>
+                <a href="https://www.linkedin.com/in/hugo-hernandez-juarez-a28847242/ " class="item-link">LINKEDIN</a>
             </div>
 
         </div>
     </div>
 
-    <!-- Script para cambiar de pestañas -->
-    <script>
-        function changeScreen(screenId) {
-            // Ocultar todas las pantallas
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            // Quitar clase activa de todos los botones
-            document.querySelectorAll('.menu-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Mostrar la pantalla seleccionada
-            document.getElementById(screenId).classList.add('active');
-            // Añadir flecha al botón clickeado
-            event.target.classList.add('active');
-        }
-    </script>
+    <!-- Enlace al script JS externo -->
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darling Dolls | Project Details</title>
+    <link rel="stylesheet" href="../main.css">
+    <style>
+            /* Sobrescribimos el CSS principal para permitir hacer scroll en esta página */
+            body {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto; /* Esto es lo que activa la barra de desplazamiento */
+                padding: 40px 0; /* Da un poco de espacio arriba y abajo */
+                display: block; /* Evita que el flexbox centre la página y corte la parte de arriba */
+            }
+
+            /* Estilos básicos para que los vídeos se vean bien integrados */
+            .project-video {
+                width: 100%;
+                max-width: 600px;
+                border: 2px solid #38bdf8;
+                border-radius: 8px;
+                margin-top: 15px;
+                margin-bottom: 30px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            }
+            
+            .content-container {
+                max-width: 800px;
+                margin: 0 auto; /* Centra la caja horizontalmente */
+                padding: 40px;
+            }
+        </style>
+</head>
+<body>
+    
+    <div class="content-container panel">
+        <h1>About the project</h1>
+        <p>Darling Dolls is a shop that mixes both my passion of crocheting and my friends love for both drawing and dolls.</p>
+
+        <h1 style="margin-top: 40px;">Features</h1>
+        
+        <!-- Sección 1: Sistema de Magia -->
+        <section>
+            <h2>Database Management</h2>
+            <p>The website I made from scratch using HTML, CSS, and JavaScript, have a login/register feature linked to a Supabase database.</p>
+        </section>
+
+        <section>
+            <h2>Website Development</h2>
+            <p>I made the entire website from scratch using HTML, CSS, and JavaScript as well as its planning.</p>
+
+            <p>#HTML #CSS #JavaScript #Supabase #WebDevelopment</p>
+        </section>
+
+        <section>
+            <h2>More...</h2>
+            <p>There are more features that I can't show here, but you can check them out by clicking the button below.</p>
+            <a href="https://darlingdollsshop.com" class="item-link">VIEW DETAILS</a>
+        </section>
+
+        <!-- Botón de regreso -->
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="../index.html" class="item-link" style="text-decoration: none; padding: 10px 20px; border: 2px solid #38bdf8; color: #38bdf8;">RETURN TO MENU</a>
+        </div>
+    </div>
+
+</body>
+</html>
