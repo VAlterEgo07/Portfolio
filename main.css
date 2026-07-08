@@ -93,3 +93,37 @@ li { margin-bottom: 8px; }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg-color); }
 ::-webkit-scrollbar-thumb { background: var(--border-color); }
+
+@media (max-width: 768px) {
+    .game-menu {
+        /* Cambia de 2 columnas a 1 sola columna */
+        grid-template-columns: 1fr; 
+        /* Permite que la caja crezca hacia abajo si hay mucho contenido */
+        height: auto; 
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .sidebar {
+        /* Pone los botones en horizontal o envueltos en móvil */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .player-info {
+        width: 100%; /* La info del jugador ocupa toda la fila arriba */
+        margin-bottom: 10px;
+    }
+
+    .menu-btn {
+        text-align: center;
+        padding: 5px 10px;
+    }
+    
+    .menu-btn.active::before {
+        content: ""; /* Quitamos la flechita en móvil para no descolocar el texto */
+    }
+}

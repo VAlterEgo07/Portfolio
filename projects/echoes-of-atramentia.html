@@ -6,14 +6,16 @@
     <title>Echoes of Atramentia | Project Details</title>
     <link rel="stylesheet" href="../main.css">
     <style>
+            /* Sobrescribimos el CSS principal para permitir hacer scroll en esta página */
             body {
                 height: auto;
                 min-height: 100vh;
-                overflow-y: auto; 
-                padding: 40px 0; 
-                display: block; 
+                overflow-y: auto; /* Esto es lo que activa la barra de desplazamiento */
+                padding: 40px 0; /* Da un poco de espacio arriba y abajo */
+                display: block; /* Evita que el flexbox centre la página y corte la parte de arriba */
             }
 
+            /* Estilos básicos para que los vídeos se vean bien integrados */
             .project-video {
                 width: 100%;
                 max-width: 600px;
@@ -26,7 +28,7 @@
             
             .content-container {
                 max-width: 800px;
-                margin: 0 auto;
+                margin: 0 auto; /* Centra la caja horizontalmente */
                 padding: 40px;
             }
         </style>
@@ -35,21 +37,33 @@
     
     <div class="content-container panel">
         <h1>About the project</h1>
-        <p>Darling Dolls is a shop that mixes both my passion of crocheting and my friends love for both drawing and dolls.</p>
+        <p>Echoes of Atramentia is a unique drawing-based magic system game. Is still a WIP so expect big changes!</p>
 
-        <h1 style="margin-top: 40px;">Features</h1>
+        <h1 style="margin-top: 40px;">Game Features</h1>
         
+        <!-- Sección 1: Sistema de Magia -->
         <section>
-            <h2>Database Management</h2>
-            <p>The website I made from scratch using HTML, CSS, and JavaScript, have a login/register feature linked to a Supabase database.</p>
+            <h2>Unique Drawing-Based Magic System</h2>
+            <p>Players can draw their own spells and magical symbols to cast powerful abilities. The game recognizes the drawn shapes and translates them into in-game effects, allowing for a highly customizable and creative gameplay experience.</p>
+            <p>For now, the program detects the basic sigils but making spells from them is still in development.</p>
             
+            <!-- Vídeo del reconocimiento de sígiles -->
+            <video class="project-video" controls autoplay loop muted>
+                <!-- IMPORTANTE: Cambia 'sigil_demo.mp4' por el nombre exacto de tu archivo -->
+                <source src="resources/EOA_sigils.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>PD: This is a simple demonstration of the magic system in action. All the prints in the console are a mixture of the drawing one and the combat system</p>
         </section>
 
+        <!-- Sección 2: Sistema de Plantación -->
         <section>
             <h2>Interactive Planting System</h2>
             <p>A core mechanical feature allowing players to cultivate and manage resources within the game world.</p>
             
+            <!-- Vídeo del sistema de plantación -->
             <video class="project-video" controls autoplay loop muted>
+                <!-- IMPORTANTE: Cambia 'planting_demo.mp4' por el nombre exacto de tu archivo -->
                 <source src="resources/EOA_planting.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -60,9 +74,9 @@
             <p>There are many more features in development, including a rich storyline, character customization, and multiplayer interactions. Stay tuned for updates!</p>
             <p>All changes and current info can be found in the next website.</p>
             <a href="https://www.echoesofatramentia.com" class="item-link">VIEW DETAILS</a>
-            <p>#GODOTENGINE #DIRECTOR</p>
         </section>
 
+        <!-- Botón de regreso -->
         <div style="text-align: center; margin-top: 30px;">
             <a href="../index.html" class="item-link" style="text-decoration: none; padding: 10px 20px; border: 2px solid #38bdf8; color: #38bdf8;">RETURN TO MENU</a>
         </div>
